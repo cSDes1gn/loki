@@ -19,10 +19,18 @@ services:
       - .:/app
     networks:
       - loki
+    environment:
+      - LOKI_ENDPOINT="http://loki:3100/loki/api/v1/push"
   loki:
-    image: grafana/loki:latest
-    container_name: loki
+    image: grafana/loki:v1.3.0
+    volumes:
+      - ./grafana/loki.yaml:/etc/config/loki.yaml
+    entrypoint:
+      - /usr/bin/loki
+      - -config.file=/etc/config/loki.yaml
     ports:
       - "3100:3100"
+    networks:
+      - loki
 networks:
   loki:
