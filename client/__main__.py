@@ -2,8 +2,11 @@ import time
 import logging
 import logging.config
 from pathlib import Path
+from threading import Thread
 from envyaml import EnvYAML
 from client.logs.formatter import pformat
+from client.p1.client import Client
+
 
 def logging_handler(config_path: Path) -> None:
     """
@@ -34,6 +37,8 @@ logging_handler(
 
 _log = logging.getLogger(__name__)
 
+cl = Client()
+Thread(target=cl.start, args=(), daemon=True).start()
 
 while True:
     _log.debug("debug log")

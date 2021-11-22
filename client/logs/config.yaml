@@ -4,14 +4,27 @@ disable_existing_loggers: false
 loggers:
   __main__:
     level: 'DEBUG'
-    handlers: ['lokiHandler']
+    handlers: ['root_handler']
+  client.p1:
+    level: 'DEBUG'
+    handlers: ['p1_handler']
+    propagate: false
 
 handlers:
-  lokiHandler:
+  root_handler:
     class: 'logging_loki.LokiHandler'
     url: ${LOKI_ENDPOINT}
     tags:
       application: "loki"
+      module: "root"
+    version: "1"
+    formatter: epoch
+  p1_handler:
+    class: 'logging_loki.LokiHandler'
+    url: ${LOKI_ENDPOINT}
+    tags:
+      application: "loki"
+      module: "p1"
     version: "1"
     formatter: epoch
     
