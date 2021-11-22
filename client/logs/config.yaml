@@ -2,7 +2,7 @@
 version: 1
 disable_existing_loggers: false
 loggers:
-  __main__:   # defines loggers that are unregistered
+  __main__:
     level: 'DEBUG'
     handlers: ['lokiHandler']
 
@@ -15,7 +15,7 @@ handlers:
     version: "1"
     formatter: epoch
     
-formatters:   # more commment
+formatters:
   default:
     format: '%(asctime)s %(threadName)s %(name)s %(lineno)d - %(levelname)s: %(message)s'
   epoch:
