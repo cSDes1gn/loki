@@ -18,15 +18,44 @@
       }
     ]
   },
-  "description": "Loki Log Stream",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
+  "id": null,
   "links": [],
   "liveNow": true,
-  "panels": [],
+  "panels": [
+    {
+      "datasource": null,
+      "description": "Loki Log Stream",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "dedupStrategy": "exact",
+        "enableLogDetails": true,
+        "prettifyLogMessage": true,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "expr": "{application=\"loki\"}",
+          "refId": "A"
+        }
+      ],
+      "title": "Loki Logs",
+      "type": "logs"
+    }
+  ],
   "schemaVersion": 32,
   "style": "dark",
   "tags": [],
@@ -37,11 +66,9 @@
     "from": "now-6h",
     "to": "now"
   },
-  "timepicker": {
-    "hidden": false
-  },
+  "timepicker": {},
   "timezone": "",
-  "title": "Loki Logs",
-  "uid": "3nyLNIp7z",
+  "title": "Test",
+  "uid": "pvaKvIp7z",
   "version": 1
 }
