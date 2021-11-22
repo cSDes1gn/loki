@@ -1,0 +1,21 @@
+---
+version: 1
+disable_existing_loggers: false
+loggers:
+  '':   # defines loggers that are unregistered
+    level: 'DEBUG'
+    handlers: ['lokiHandler']
+
+handlers:
+  lokiHandler:
+    class: 'logging_loki.LokiHandler'
+    url: http://grafana:3000/
+    formatter: epoch
+    
+formatters:   # more commment
+  default:
+    format: '%(asctime)s %(threadName)s %(name)s %(lineno)d - %(levelname)s: %(message)s'
+  epoch:
+    format: '%(created)f %(threadName)s %(name)s %(lineno)d - %(levelname)s: %(message)s'
+  simple:
+    format: '%(name)s %(lineno)d - %(levelname)s: %(message)s'
