@@ -2,14 +2,17 @@
 version: 1
 disable_existing_loggers: false
 loggers:
-  '':   # defines loggers that are unregistered
+  __main__:   # defines loggers that are unregistered
     level: 'DEBUG'
     handlers: ['lokiHandler']
 
 handlers:
   lokiHandler:
     class: 'logging_loki.LokiHandler'
-    url: http://grafana:3000/
+    url: ${LOKI_ENDPOINT}
+    tags:
+      application: "loki"
+    version: "1"
     formatter: epoch
     
 formatters:   # more commment
