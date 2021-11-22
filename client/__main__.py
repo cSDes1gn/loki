@@ -1,11 +1,9 @@
-import os
 import time
 import logging
 import logging.config
 from pathlib import Path
 from envyaml import EnvYAML
 from client.logs.formatter import pformat
-
 
 def logging_handler(config_path: Path) -> None:
     """
@@ -30,17 +28,17 @@ def logging_handler(config_path: Path) -> None:
     else:
         logging.info("Logging configuration successful.")
 
-
 logging_handler(
     config_path=Path(__file__).parent.joinpath("logs/config.yaml")
 )
+
 _log = logging.getLogger(__name__)
+
 
 while True:
     _log.debug("debug log")
     _log.info("information log")
     _log.warning("warning log")
     _log.error("error log")
-    _log.exception("exception log")
     _log.critical("critical log")
     time.sleep(1)
