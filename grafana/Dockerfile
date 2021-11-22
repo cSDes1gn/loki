@@ -10,5 +10,6 @@ ENV GF_SECURITY_ADMIN_PASSWORD "loki"
 
 # package incuvers custom config
 ADD grafana/grafana.ini /etc/grafana/grafana.ini
+ADD grafana/datasource.yaml /etc/grafana/provisioning/datasources/datasource.yaml
 
 ENTRYPOINT [ "/run.sh" ]
