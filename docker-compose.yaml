@@ -2,7 +2,7 @@
 version: "3"
 services:
   grafana:
-    container_name: rmq
+    container_name: grafana 
     build:
       context: .
       dockerfile: grafana/Dockerfile
@@ -19,5 +19,10 @@ services:
       - .:/app
     networks:
       - loki
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - "3100:3100"
 networks:
   loki:
